@@ -3,7 +3,11 @@
  * Tests all 10 security audit requirements against the active Branderss backend
  */
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 const BASE_URL = 'http://localhost:5000';
+const ADMIN_API_KEY = process.env.ADMIN_API_KEY || 'branderss-admin-dev-secret-key';
 
 async function runTests() {
   console.log('======================================================');
@@ -124,7 +128,7 @@ async function runTests() {
     assert(unauthGetRes.status === 401, 'Unauthenticated GET /api/contact blocked with 401 Unauthorized', `Status: ${unauthGetRes.status}`);
 
     const authGetRes = await fetch(`${BASE_URL}/api/contact`, {
-      headers: { 'x-admin-key': 'branderss-admin-dev-secret-key' }
+      headers: { 'x-admin-key': ADMIN_API_KEY }
     });
     assert(authGetRes.status === 200, 'Authenticated GET /api/contact with admin key returns 200 OK', `Status: ${authGetRes.status}`);
 

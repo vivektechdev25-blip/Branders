@@ -21,8 +21,9 @@ const parseCorsOrigins = (raw) => {
 
 export const config = {
   port: process.env.PORT || 5000,
-  nodeEnv: process.env.NODE_ENV || 'development',
-  mongoUri: process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/branderss',
+  nodeEnv: (process.env.NODE_ENV || 'development').trim().toLowerCase(),
+  supabaseUrl: process.env.SUPABASE_URL || 'https://amoigwxxcdoypninyhes.supabase.co',
+  supabaseKey: process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY || '',
   corsOrigin: process.env.CORS_ORIGIN || 'http://localhost:3000,http://127.0.0.1:3000',
   allowedOrigins: parseCorsOrigins(process.env.CORS_ORIGIN),
   adminApiKey: process.env.ADMIN_API_KEY || 'branderss-admin-dev-secret-key',
