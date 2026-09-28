@@ -3,7 +3,7 @@
 > **"Make it bold, make it Branderss"**  
 > *"We just don't do marketing, we create a story around your brand."*
 
-A luxury creative agency platform built for **Branderss**, combining **MyGenie's business clarity and conversion-focused information architecture** with **Spaxads' high-end visual impact, 3D storytelling, and creative motion**.
+A luxury creative agency platform built for **Branderss**, combining business clarity and conversion-focused information architecture with high-end visual impact, 3D storytelling, and creative motion.
 
 ---
 
