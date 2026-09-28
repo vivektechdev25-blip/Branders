@@ -5,6 +5,8 @@
 export const GOOGLE_APPS_SCRIPT_ENDPOINT =
   'https://script.google.com/macros/s/AKfycbwz9ViVfuQVYgfmBb2lzg8CIEt0rcYP1DsQIxJZUetetMKPjpZDC1zfEnWsfj6PILFQtg/exec';
 
+const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/+$/, '');
+
 /**
  * Submits contact inquiry to the Google Apps Script Web App endpoint.
  *
@@ -90,11 +92,13 @@ export const submitContactInquiry = async (formData) => {
     }
 
     // Secondary background sync with local backend database
-    fetch('/api/contact', {
+    fetch(`${API_BASE_URL}/api/contact`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)
-    }).catch(() => {});
+    }).catch((err) => {
+      console.warn('[Backend Sync Error]', err);
+    });
 
     return {
       success: true,
